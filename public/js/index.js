@@ -4,6 +4,15 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
+function searchGiphy(searchParam) {
+  var queryURL = "https://api.yelp.com/v3/businesses/search?accessToken=XUK8kJiJLEclthCKRG0RbJBwNCZ5WOyjJTrGB2ZLFaMQtIITVKDUH1wrI-JEkPgywOnaVWzenaoxzUEiAyrZ5ORl7tGCRussnR2P5_JtnbTqkJc0TqZZK3YMIEftXXYx&term=Spas" +
+      searchParam + "&api_key=XUK8kJiJLEclthCKRG0RbJBwNCZ5WOyjJTrGB2ZLFaMQtIITVKDUH1wrI-JEkPgywOnaVWzenaoxzUEiAyrZ5ORl7tGCRussnR2P5_JtnbTqkJc0TqZZK3YMIEftXXYx&limit=10";
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+  })
+            console.log(response);
+
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
