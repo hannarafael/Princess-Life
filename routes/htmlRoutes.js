@@ -29,6 +29,15 @@ module.exports = function(app) {
     });
 });
 
+
+app.post("/signup", function(req, res) {
+     
+  res.json("200", {
+    example: req.body
+  });
+});
+
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.json("404");
