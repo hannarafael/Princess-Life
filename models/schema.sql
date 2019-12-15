@@ -1,3 +1,0 @@
-DROP DATABASE IF EXISTS treat_db;
-CREATE DATABASE treat_db;
-

@@ -31,6 +31,13 @@ module.exports = function(app) {
 
 
 app.post("/signup", function(req, res) {
+
+  axios.get('https://api.yelp.com/v3/businesses/search?term=food&location=philadelphia', {
+        headers: {
+            Authorization: "Bearer 0XmJFcySOehBbfOmxvf1H63RKMdvpEJsvTNpomcB9O4QnuuUkQbAh8Nxy9HZ88xfGJ3xOXuypueX1qjo4mdVJfmHioHkHfczT0b3evJAUkSBhqhinqHk1erdbNjrXXYx"
+        }
+    }).then((response) => {
+            console.log(response.data.businesses);
      
   res.json("200", {
     example: req.body
@@ -42,4 +49,6 @@ app.post("/signup", function(req, res) {
   app.get("*", function(req, res) {
     res.json("404");
   });
+});
+
 };
