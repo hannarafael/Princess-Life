@@ -30,14 +30,20 @@
     <div class="nav-menu">
         <div class="bg transition">
             <div class="container-fluid fixed">
+                    <form action="login" method="post">
+                            User:<br>
+                            <input type="text" name="username">
+                            <br>
+                            Password:<br>
+                            <input type="text" name="password">
+                            <br><br>
+                            <input type="Submit" value="login">
+                          </form> 
                 <div class="row">
                     <div class="col-md-12">
                         <nav class="navbar navbar-expand-lg navbar-dark">
-                            <a class="navbar-brand" href="index.html"> <button type="button">Login</button></a>
-                        
 
-
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-menu"></span>
               </button>
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
@@ -81,7 +87,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">Blog</a>
                                     </li>
-                                    <li><a href="#" class="btn btn-outline-light top-btn"><span class="ti-plus"></span> Sign up</a></li>
+                                    <li><a id="signup" href="#" class="btn btn-outline-light top-btn"><span class="ti-plus"></span> Sign up</a></li>
                                 </ul>
                             </div>
                         </nav>
