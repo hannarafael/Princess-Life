@@ -21,24 +21,63 @@ module.exports = function (app) {
 
 
   app.post("/login", function (req, res) {
+    db.User.findOne({
+      where: {
+        userName: req.body.username
+      }
+    }).then(function (result) {
+      if (result != null) {
+        console.log("logged in")
+        //user found
+        if (result.password === req.body.password) {
+          res.send(200,"logged in");
+         }
+         else{
+          res.send(200,"wrong password");
+         }
 
-    res.json("200", {
-      example: req.body
+      } else {
+        console.log("user does not exist")
+        //user not found
+        res.send("200", "user does not exist");
+
+      }
     });
   });
 
   app.post("/signup", function (req, res) {
-
-    res.json("200", {
-      example: req.body
+    db.User.findOne({
+      where: {
+        userName: req.body.username
+      }
+    }).then(function (result) {
+      if (result != null) {
+        console.log("result")
+        //can't create 
+        res.send("200", "user info taken");
+      } else {
+        console.log("null")
+        //can create
+        if (req.body.password === req.body.verify) {
+          db.User.create({
+            "userName": req.body.username,
+            "email": req.body.email,
+            "password": req.body.password
+          })
+          console.log("nice")
+          res.send("200", "user created");
+        } else {
+          console.log("nope")
+        }
+      }
     });
   });
 
- 
+
   app.post("/search", function (req, res) {
     search = 'https://api.yelp.com/v3/businesses/search?term=food&location=city';
-    food = search.replace(/food/,req.body.query);
-    location= food.replace(/city/,req.body.city);
+    food = search.replace(/food/, req.body.query);
+    location = food.replace(/city/, req.body.city);
     console.log(location);
     axios.get(location, {
       headers: {
@@ -51,7 +90,7 @@ module.exports = function (app) {
         example: req.body,
         query: req.body.query,
         data: response.data.businesses
-      }); 
+      });
     });
 
 
